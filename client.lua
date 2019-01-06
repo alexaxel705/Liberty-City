@@ -17948,10 +17948,20 @@ end
 
 
 
-function CheckFiles(arr)
-	DownloadList = arr
-	FullLoading = #DownloadList
-	addEventHandler("onClientRender", root, DrawOnClientRender)
+function CheckFiles(arr)	
+	local newarr = {}
+	for _, i in ipairs(arr) do
+		if(not fileExists(i)) then
+			table.insert(newarr, i)
+		end
+	end
+	if(#newarr > 0) then
+		DownloadList = newarr
+		FullLoading = #DownloadList
+		addEventHandler("onClientRender", root, DrawOnClientRender)
+	else
+		AllDownloadCompleted()
+	end
 end
 addEvent("CheckFiles", true)
 addEventHandler("CheckFiles", localPlayer, CheckFiles)
@@ -17976,7 +17986,24 @@ function HideHud(hide)
 end
 
 
+function AllDownloadCompleted()
+	for i = 550, 20000 do
+		removeWorldModel(i,10000,0,0,0)
+	end
+	setWaterLevel(-5000)
+	setOcclusionsEnabled(false)
+	triggerServerEvent("CheckEnd", localPlayer, localPlayer)
+	
+	addEventHandler("onClientRender", root, GenerateMapPreRender)	
 
+	setWeather(1)
+	setFogDistance(1000)
+	setFarClipDistance(3000)
+	setRainLevel(0)
+	setSkyGradient(30,117,210, 53,162,227)
+	setCloudsEnabled(false)
+	HideHud(true)
+end
 
 function onDownloadFinish(file, success)
     if(source == resourceRoot) then
@@ -17984,23 +18011,8 @@ function onDownloadFinish(file, success)
 			table.remove(DownloadList, 1)
 			Loading = (FullLoading-#DownloadList)/FullLoading*100
 			if(#DownloadList == 0) then
-				for i = 550, 20000 do
-					removeWorldModel(i,10000,0,0,0)
-				end
-				setWaterLevel(-5000)
-				setOcclusionsEnabled(false)
-				triggerServerEvent("CheckEnd", localPlayer, localPlayer)
-				
-				addEventHandler("onClientRender", root, GenerateMapPreRender)
-				removeEventHandler("onClientRender", root, DrawOnClientRender)		
-
-				setWeather(1)
-				setFogDistance(1000)
-				setFarClipDistance(3000)
-				setRainLevel(0)
-				setSkyGradient(30,117,210, 53,162,227)
-				setCloudsEnabled(false)
-				HideHud(true)
+				removeEventHandler("onClientRender", root, DrawOnClientRender)	
+				AllDownloadCompleted()
 			else
 				DownloadNext = true
 			end
@@ -18070,10 +18082,12 @@ function GenerateMapPreRender()
 					
 					GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5]+10, rx,ry,rz, true)
 					setElementDimension(GTAVC[ind][12], 1)
+					
+					setLowLODElement(GTAVC[ind][12], false)
 					setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
 					engineSetModelLODDistance(lodmodel, v[10])
 				else
-					setLowLODElement(GTAVC[ind][11], nil)
+					setLowLODElement(GTAVC[ind][11], false)
 				end
 			end
 			ind = ind+1
