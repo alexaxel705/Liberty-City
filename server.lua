@@ -19,17 +19,27 @@ until Completed;
 
 
 
+function CreateVehicle(model, x, y, z, rx, ry, rz, numberplate, bDirection, variant1, variant2)
+	local theVehicle = createVehicle(model, x, y, z, rx, ry, rz, numberplate, bDirection, variant1, variant2)
+	setElementDimension(theVehicle, 1)
+	return theVehicle
+end
+
+
+
 
 
 function Go_LC(thePlayer)
 	setCameraTarget(thePlayer, thePlayer)
 	setElementPosition(thePlayer, 787.5, 691.2, 18.5)
+	setElementRotation(thePlayer, 0,0,180)
 	setElementDimension(thePlayer, 1)
 	setElementInterior(thePlayer, 0)
 	setElementFrozen(thePlayer, false)
 	local theVehicle = getPedOccupiedVehicle(thePlayer)
 	if(theVehicle) then
-		setElementPosition(theVehicle, 788.5, 689, 20)
+		setElementPosition(theVehicle, 787.5, 691.2, 20.5)
+		setElementRotation(theVehicle, 0,0,180)
 		setElementDimension(theVehicle, 1)
 		setElementInterior(theVehicle, 0)
 	end
@@ -41,10 +51,9 @@ addEventHandler("Go_LC", root, Go_LC)
 
 
 function CheckEnd(thePlayer)
+	triggerClientEvent(thePlayer, "LibertyRadar", thePlayer)
 	checkVC[thePlayer] = "lc"
 	setElementFrozen(thePlayer, true)
-	
-	setCameraMatrix(thePlayer, 7968.64-7850, 8394.292-7850, 23.1283+150, 7968.64-8000, 8394.292-8000, 23.1283+50) -- 1288.5, 1189, 75.7, 788.5, 689, 25.7)
 	
 	setElementDimension(thePlayer, 1)
 	setElementInterior(thePlayer, 0)
@@ -55,8 +64,6 @@ function CheckEnd(thePlayer)
 end
 addEvent("CheckEnd", true)
 addEventHandler("CheckEnd", root, CheckEnd)
-
-
 
 
 
@@ -71,16 +78,3 @@ function lc(thePlayer, command, h)
 	end
 end
 addCommandHandler("lc", lc)
-
-function worldtime()
-	--for thePlayer, theKey in pairs(checkVC) do
-	--	local x, y, z = getElementPosition(thePlayer)
-	--	if(x < 6000 or x > 9000) then
-	--		if(y > -7000 or y < -10000) then
-	--			triggerClientEvent(thePlayer, "ClearObj", thePlayer)
-	--			checkVC[thePlayer] = nil
-	--		end
-	--	end
-	--end
-end
-setTimer(worldtime, 1000, 0)
