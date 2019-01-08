@@ -52,6 +52,7 @@ addEventHandler("Go_LC", root, Go_LC)
 
 function CheckEnd(thePlayer)
 	triggerClientEvent(thePlayer, "LibertyRadar", thePlayer)
+	setElementData(thePlayer, "City", "Liberty City")
 	checkVC[thePlayer] = "lc"
 	setElementFrozen(thePlayer, true)
 	
