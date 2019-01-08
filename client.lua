@@ -17959,12 +17959,28 @@ end
 
 
 
-local x,y,_ = getElementPosition(localPlayer)
 
-function GetFreeModelIds()
-	local out = FreeIds[#FreeIds]
-	table.remove(FreeIds, #FreeIds)
-	return out
+local x,y,_ = getElementPosition(localPlayer)
+local ReplaceModel = {}
+function GetFreeModelIds(forid)
+	if(not ReplaceModel[forid]) then
+		local out = FreeIds[#FreeIds]
+		ReplaceModel[forid] = out
+		table.remove(FreeIds, #FreeIds)
+		
+		
+		col_floors = engineLoadCOL("vc/"..forid..".col")
+		engineReplaceCOL(col_floors, ReplaceModel[forid])
+		
+		if(Textures[forid..".dff"]) then 
+			txd = engineLoadTXD("vc/"..Textures[forid..".dff"])
+			engineImportTXD(txd, ReplaceModel[forid])
+		end
+		
+		dff = engineLoadDFF("vc/"..forid..".dff")
+		engineReplaceModel(dff, ReplaceModel[forid])
+	end
+	return ReplaceModel[forid]
 end
 
 
@@ -18066,17 +18082,7 @@ function GenerateMapPreRender()
 		local lodname = false
 		local model = v[1]
 		if(not NativeModel[v[1]]) then	
-			model = GetFreeModelIds()			
-			col_floors = engineLoadCOL("vc/"..v[2]..".col")
-			engineReplaceCOL(col_floors, model)
-			
-			if(Textures[v[2]..".dff"]) then 
-				txd = engineLoadTXD("vc/"..Textures[v[2]..".dff"])
-				engineImportTXD(txd, model)
-			end
-			
-			dff = engineLoadDFF("vc/"..v[2]..".dff")
-			engineReplaceModel(dff, model)
+			model = GetFreeModelIds(v[2])			
 			
 			lodname = 'lod'..string.sub(v[2], 4)
 			if(not Textures[lodname..".dff"]) then lodname = false end
@@ -18099,11 +18105,7 @@ function GenerateMapPreRender()
 			end
 			
 			if(lodname) then
-				local lodmodel = GetFreeModelIds()
-				txd = engineLoadTXD("vc/"..Textures[lodname..".dff"]) 
-				engineImportTXD(txd, lodmodel)
-				dff = engineLoadDFF("vc/"..lodname..".dff")
-				engineReplaceModel(dff, lodmodel)
+				local lodmodel = GetFreeModelIds(lodname)
 				
 				GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5], rx,ry,rz, true)
 				setElementDimension(GTAVC[ind][12], 1)
