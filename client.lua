@@ -18102,7 +18102,13 @@ function GenerateMapPreRender()
 		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
 		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
 		if(isElement(GTAVC[ind][11])) then
-			engineSetModelLODDistance(model, 250)
+			if(not v[10]) then v[10] = 300 end
+			if(v[10] == -1) then 
+				v[10] = 300 
+			elseif(v[10] < 100) then 
+				v[10] = 100 
+			end
+			engineSetModelLODDistance(model, v[10])
 			setElementDimension(GTAVC[ind][11], 1)
 			
 			if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
@@ -18123,7 +18129,7 @@ function GenerateMapPreRender()
 				
 				setLowLODElement(GTAVC[ind][12], false)
 				setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
-				engineSetModelLODDistance(lodmodel, v[10])
+				engineSetModelLODDistance(lodmodel, 300)
 			else
 				setLowLODElement(GTAVC[ind][11], false)
 			end
