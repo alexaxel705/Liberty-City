@@ -17962,6 +17962,8 @@ end
 
 local x,y,_ = getElementPosition(localPlayer)
 local ReplaceModel = {}
+local LoadedTxd = {}
+
 function GetFreeModelIds(forid)
 	if(not ReplaceModel[forid]) then
 		local out = FreeIds[#FreeIds]
@@ -17969,13 +17971,22 @@ function GetFreeModelIds(forid)
 		table.remove(FreeIds, #FreeIds)
 		
 		
-		col_floors = engineLoadCOL("vc/"..forid..".col")
-		engineReplaceCOL(col_floors, ReplaceModel[forid])
-		
-		if(Textures[forid..".dff"]) then 
-			txd = engineLoadTXD("vc/"..Textures[forid..".dff"])
-			engineImportTXD(txd, ReplaceModel[forid])
+		if(fileExists("vc/"..forid..".col")) then
+			col_floors = engineLoadCOL("vc/"..forid..".col")
+			engineReplaceCOL(col_floors, ReplaceModel[forid])
 		end
+		
+		
+		local texture = Textures[forid..".dff"]
+		if(texture) then 
+			if(not LoadedTxd[texture]) then
+				LoadedTxd[texture] = engineLoadTXD("vc/"..texture)
+				engineImportTXD(LoadedTxd[texture], ReplaceModel[forid])
+			else
+				engineImportTXD(LoadedTxd[texture], ReplaceModel[forid])
+			end
+		end
+		
 		
 		dff = engineLoadDFF("vc/"..forid..".dff")
 		engineReplaceModel(dff, ReplaceModel[forid])
