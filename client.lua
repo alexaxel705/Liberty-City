@@ -5147,7 +5147,7 @@ local GTAVC = {
 [2825] = {26198, "sub_indfrate2108", 7026.71, 8517.024, 11.571501, 0, 0, 0, 1, -1}, 
 [2826] = {26199, "sub_indfrate2109", 7029.49, 8318.474, 11.571501, 0, 0, 0, 1, -1}, 
 [2827] = {26200, "sub_indland06", 6740.08, 8857.415, 52.015, 0, 0, 0, 1, 363}, 
-[2828] = {20207, "helipad0", 6358.33, 8080.897, 11.799999, 0, 0, -0.707107, 0.707107, -1}, 
+--[2828] = {20207, "helipad0", 6358.33, 8080.897, 11.799999, 0, 0, -0.707107, 0.707107, -1}, 
 [2829] = {26207, "airtower1", 6923.45, 8520.478, 62.064003, 0, 0, 0, 1, 373}, 
 [2830] = {26208, "airtower2", 6923.45, 8295.032, 62.064003, 0, 0, 0, 1, 372}, 
 [2831] = {24236, "smal_outsidelight", 6668.34, 8849.237, 62.0776, 0, 0, 0.707107, 0.707107, -1}, 
@@ -18046,80 +18046,86 @@ addEventHandler("onClientFileDownloadComplete", root, onDownloadFinish)
 
 
 
-local BannedNames = {
-	["helipad0"] = true
-}
 
+function getMaxIndex(arr)
+	local ii = 0
+	for i,_ in pairs(arr) do 
+		if(i > ii) then
+			ii=i
+		end
+	end
+	return ii
+end
 
+local TotalObjects = getMaxIndex(GTAVC)
 local ind = 1
 local Loading2 = 0
 function GenerateMapPreRender()
-
 	if(GTAVC[ind]) then 
-		if(BannedNames[GTAVC[ind][2]]) then
-			ind = ind + 1
-		else
-			local v = GTAVC[ind]
-			local lodname = false
-			local model = v[1]
-			if(not NativeModel[v[1]]) then	
-				model = GetFreeModelIds()			
-				col_floors = engineLoadCOL("vc/"..v[2]..".col")
-				engineReplaceCOL(col_floors, model)
-				
-				if(Textures[v[2]..".dff"]) then 
-					txd = engineLoadTXD("vc/"..Textures[v[2]..".dff"]) 
-					engineImportTXD(txd, model)
-				end
-				
-				dff = engineLoadDFF("vc/"..v[2]..".dff")
-				engineReplaceModel(dff, model)
-				
-				lodname = 'lod'..string.sub(v[2], 4)
-				if(not Textures[lodname..".dff"]) then lodname = false end
+		local v = GTAVC[ind]
+		local lodname = false
+		local model = v[1]
+		if(not NativeModel[v[1]]) then	
+			model = GetFreeModelIds()			
+			col_floors = engineLoadCOL("vc/"..v[2]..".col")
+			engineReplaceCOL(col_floors, model)
+			
+			if(Textures[v[2]..".dff"]) then 
+				txd = engineLoadTXD("vc/"..Textures[v[2]..".dff"])
+				engineImportTXD(txd, model)
 			end
 			
-			local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
-			GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
-
-			if(isElement(GTAVC[ind][11])) then
-				engineSetModelLODDistance(model, 200)
-				setElementDimension(GTAVC[ind][11], 1)
-				
-				if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
-					setCameraMatrix(v[3]+150,v[4]+150,v[5]+150, v[3],v[4],v[5]+50)
-					setWeather(1)
-					setFogDistance(1000)
-					setFarClipDistance(3000)
-					setRainLevel(0)
-					setSkyGradient(30,117,210, 53,162,227)
-					setCloudsEnabled(false)
-				end
-				
-				if(lodname) then
-					local lodmodel = GetFreeModelIds()
-					txd = engineLoadTXD("vc/"..Textures[lodname..".dff"]) 
-					engineImportTXD(txd, lodmodel)
-					dff = engineLoadDFF("vc/"..lodname..".dff")
-					engineReplaceModel(dff, lodmodel)
-					
-					GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5], rx,ry,rz, true)
-					setElementDimension(GTAVC[ind][12], 1)
-					
-					setLowLODElement(GTAVC[ind][12], false)
-					setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
-					engineSetModelLODDistance(lodmodel, v[10])
-				else
-					setLowLODElement(GTAVC[ind][11], false)
-				end
-			end
-			ind = ind+1
+			dff = engineLoadDFF("vc/"..v[2]..".dff")
+			engineReplaceModel(dff, model)
+			
+			lodname = 'lod'..string.sub(v[2], 4)
+			if(not Textures[lodname..".dff"]) then lodname = false end
 		end
+		
+		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
+		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
+		if(isElement(GTAVC[ind][11])) then
+			engineSetModelLODDistance(model, 250)
+			setElementDimension(GTAVC[ind][11], 1)
+			
+			if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
+				setCameraMatrix(v[3]+150,v[4]+150,v[5]+150, v[3],v[4],v[5]+50)
+				setWeather(1)
+				setFogDistance(1000)
+				setFarClipDistance(3000)
+				setRainLevel(0)
+				setSkyGradient(30,117,210, 53,162,227)
+				setCloudsEnabled(false)
+			end
+			
+			if(lodname) then
+				local lodmodel = GetFreeModelIds()
+				txd = engineLoadTXD("vc/"..Textures[lodname..".dff"]) 
+				engineImportTXD(txd, lodmodel)
+				dff = engineLoadDFF("vc/"..lodname..".dff")
+				engineReplaceModel(dff, lodmodel)
+				
+				GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5], rx,ry,rz, true)
+				setElementDimension(GTAVC[ind][12], 1)
+				
+				setLowLODElement(GTAVC[ind][12], false)
+				setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
+				engineSetModelLODDistance(lodmodel, v[10])
+			else
+				setLowLODElement(GTAVC[ind][11], false)
+			end
+		end
+		ind = ind+1
+		
 	else
-		setGameSpeed(1.2)
-		triggerServerEvent("Go_LC", localPlayer, localPlayer)
-		DrawZones()
-		removeEventHandler("onClientRender", root, GenerateMapPreRender)
+		if(ind < TotalObjects) then
+			ind = ind + 1
+		else
+			setGameSpeed(1.2)
+			triggerServerEvent("Go_LC", localPlayer, localPlayer)
+			DrawZones()
+			removeEventHandler("onClientRender", root, GenerateMapPreRender)
+		end
 	end
 	Loading2 = (#GTAVC-(#GTAVC-ind))/#GTAVC*100
 	dxDrawRectangle(100*scale, screenHeight-(100*scale),screenWidth-(200*scale), 15*scale, tocolor(45,70,50,255))
