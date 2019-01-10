@@ -17987,12 +17987,8 @@ function CheckFiles(arr)
 			v[5] = v[5] + MapOffset[3]
 			if(engineGetModelNameFromID(v[1])) then 
 				NativeModel[v[1]] = true 
-				local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
-				GTAVCSource[i][11] = createObject(v[1],v[3],v[4],v[5], rx,ry,rz)
-				setElementDimension(GTAVCSource[i][11], 1)
-			else
-				table.insert(GTAVC, v)
 			end
+			table.insert(GTAVC, v)
 		end
 
 		for _, v in pairs(FreeIdsSource) do
@@ -18080,13 +18076,11 @@ function GenerateMapPreRender()
 			if(not v[10]) then v[10] = 300 end
 			if(v[10] == -1) then 
 				v[10] = 300 
-			elseif(v[10] < 150) then 
-				v[10] = 150 
 			end
 			engineSetModelLODDistance(model, v[10])
 			setElementDimension(GTAVC[ind][11], 1)
 			
-			if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
+			if((ind/1000) == math.floor(ind/1000) or ind == 1) then -- Менять кадр каждые 1000 объектов
 				setCameraMatrix(v[3]+150,v[4]+150,v[5]+150, v[3],v[4],v[5]+50)
 				setWeather(1)
 				setFogDistance(1000)
