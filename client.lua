@@ -3169,7 +3169,7 @@ local GTAVCSource = {
 [847] = {24713, "com_2lane_tunnl", 8587.473, 9164.205, -3.74084, 0, 0, 0, 1, -1}, 
 [848] = {24714, "com_cust_roads14", 8699.603, 8891.478, 14.1371, 0, 0, 0, 1, -1}, 
 [849] = {24715, "com_cust_roads26", 8471.815, 8598.571, 19.0401, 0, 0, 0, 1, -1}, 
---[850] = {24716, "com_cust_roads31", 8429.27, 8943.585, 11.6331005, 0, 0, 0, 1, -1}, 
+[850] = {24716, "com_cust_roads31", 8429.27, 8943.585, 11.6331005, 0, 0, 0, 1, -1}, 
 [851] = {24717, "com_cust_roads54", 8702.103, 8878.978, 14.124001, 0, 0, 0, 1, -1}, 
 [852] = {24718, "com_roadkb21", 8656.825, 8563.587, 10.3335, 0, 0, 0, 1, -1}, 
 [853] = {24719, "com_roadkb20", 8656.815, 8503.571, 11.686899, 0, 0, 0, 1, -1}, 
@@ -5147,7 +5147,7 @@ local GTAVCSource = {
 [2825] = {26198, "sub_indfrate2108", 7026.71, 8517.024, 11.571501, 0, 0, 0, 1, -1}, 
 [2826] = {26199, "sub_indfrate2109", 7029.49, 8318.474, 11.571501, 0, 0, 0, 1, -1}, 
 [2827] = {26200, "sub_indland06", 6740.08, 8857.415, 52.015, 0, 0, 0, 1, 363}, 
---[2828] = {20207, "helipad0", 6358.33, 8080.897, 11.799999, 0, 0, -0.707107, 0.707107, -1}, 
+[2828] = {20207, "helipad0", 6358.33, 8080.897, 11.799999, 0, 0, -0.707107, 0.707107, -1}, 
 [2829] = {26207, "airtower1", 6923.45, 8520.478, 62.064003, 0, 0, 0, 1, 373}, 
 [2830] = {26208, "airtower2", 6923.45, 8295.032, 62.064003, 0, 0, 0, 1, 372}, 
 [2831] = {24236, "smal_outsidelight", 6668.34, 8849.237, 62.0776, 0, 0, 0.707107, 0.707107, -1}, 
@@ -18031,6 +18031,31 @@ addEventHandler("CheckFiles", localPlayer, CheckFiles)
 
 
 
+
+local BannedObjects = {
+	["bridgefukb"] = true, 
+	["bridgefuka"] = true, 
+	 
+	["com_cust_roads31"] = true, 
+	 
+	["helipad0"] = true, 
+	 
+	["islandlodsubcom"] = true, 
+	["islandlodsubind"] = true, 
+	["islandlodcomsub"] = true, 
+	["islandlodind"] = true, 
+	["islandlodcomind"] = true, 
+	
+	["roadcustc1w01"] = true,
+	["com_roadkb21"] = true, 
+	["com_roadkb20"] = true, 
+	["com_roadkb19"] = true, 
+	["com_roadkb18"] = true, 
+	
+}
+
+
+
 function AllDownloadCompleted()
 	for i, v in pairs(GTAVCSource) do
 		v[3] = v[3] + MapOffset[1]
@@ -18042,7 +18067,9 @@ function AllDownloadCompleted()
 			GTAVCSource[i][11] = createObject(v[1],v[3],v[4],v[5], rx,ry,rz)
 			setElementDimension(GTAVCSource[i][11], 1)
 		else
-			table.insert(GTAVC, v)
+			if(not BannedObjects[v[2]]) then
+				table.insert(GTAVC, v)
+			end
 		end
 	end
 
@@ -18109,6 +18136,7 @@ end
 
 
 
+
 local TotalObjects = getMaxIndex(GTAVC)
 local ind = 1
 local Loading2 = 0
@@ -18116,16 +18144,14 @@ function GenerateMapPreRender()
 	if(GTAVC[ind]) then 
 		local v = GTAVC[ind]
 		local lodname = false
-		local model = v[1]
-		if(not NativeModel[v[1]]) then	
-			model = GetFreeModelIds(v[2])
+		local model = GetFreeModelIds(v[2])
 			
-			lodname = 'lod'..string.sub(v[2], 4)
-			if(not Textures[lodname..".dff"]) then lodname = false end
-		end
+		lodname = 'lod'..string.sub(v[2], 4)
+		if(not Textures[lodname..".dff"]) then lodname = false end
 		
 		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
 		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
+		setElementData(GTAVC[ind][11], "dat", v[2])
 		if(isElement(GTAVC[ind][11])) then
 			if(not v[10]) then v[10] = 300 end
 			if(v[10] == -1) then 
