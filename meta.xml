@@ -1,5 +1,5 @@
 <meta>
-	<info name="GTA III Liberty City" version="1.0.0" type="script" author="alexaxel705" description="GTA III Liberty City Map"/>
+	<info name="GTA III Liberty City" version="1.0.1" type="script" author="alexaxel705" description="GTA III Liberty City Map"/>
 	<script src="client.lua" type="client"/>
 	<script src="server.lua" type="server"/>
 	<download_priority_group>-1</download_priority_group>
