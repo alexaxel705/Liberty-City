@@ -18057,7 +18057,7 @@ function AllDownloadCompleted()
 	
 	for _, v in pairs(FreeIdsSource) do
 		if(not NativeModel[v] and not BannedFreeIds[v]) then 
-			table.insert(FreeIds, 1, v)
+			table.insert(FreeIds, v)
 		end
 	end
 
@@ -18098,19 +18098,6 @@ addEventHandler("onClientFileDownloadComplete", root, onDownloadFinish)
 
 
 
-<<<<<<< HEAD
-=======
-
-function getMaxIndex(arr)
-	local ii = 0
-	for i,_ in pairs(arr) do 
-		if(i > ii) then
-			ii=i
-		end
-	end
-	return ii
-end
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 
 function getMaxIndex(arr)
 	local ii = 0
@@ -18122,10 +18109,8 @@ function getMaxIndex(arr)
 	return ii
 end
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
+
 local TotalObjects = getMaxIndex(GTAVC)
 local ind = 1
 local Loading2 = 0
@@ -18135,15 +18120,6 @@ function GenerateMapPreRender()
 		local lodname = false
 		local model = v[1]
 		if(not NativeModel[v[1]]) then	
-<<<<<<< HEAD
-			model = GetFreeModelIds()			
-			col_floors = engineLoadCOL("vc/"..v[2]..".col")
-			engineReplaceCOL(col_floors, model)
-			
-			if(Textures[v[2]..".dff"]) then 
-				txd = engineLoadTXD("vc/"..Textures[v[2]..".dff"])
-				engineImportTXD(txd, model)
-=======
 			model = GetFreeModelIds(v[2])
 			
 			lodname = 'lod'..string.sub(v[2], 4)
@@ -18158,29 +18134,11 @@ function GenerateMapPreRender()
 				v[10] = 300 
 			elseif(v[10] <= 150) then 
 				v[10] = 150 
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 			end
 			engineSetModelLODDistance(model, v[10])
 			setElementDimension(GTAVC[ind][11], 1)
 			
-<<<<<<< HEAD
-			dff = engineLoadDFF("vc/"..v[2]..".dff")
-			engineReplaceModel(dff, model)
-			
-			lodname = 'lod'..string.sub(v[2], 4)
-			if(not Textures[lodname..".dff"]) then lodname = false end
-		end
-		
-		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
-		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
-		if(isElement(GTAVC[ind][11])) then
-			engineSetModelLODDistance(model, 250)
-			setElementDimension(GTAVC[ind][11], 1)
-			
-			if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
-=======
-			if((ind/1000) == math.floor(ind/1000) or ind == 1) then -- Менять кадр каждые 1000 объектов
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
+			if((ind/2000) == math.floor(ind/2000) or ind == 1) then -- Менять кадр каждые 2000 объектов
 				setCameraMatrix(v[3]+150,v[4]+150,v[5]+150, v[3],v[4],v[5]+50)
 				setWeather(1)
 				setFogDistance(1000)
@@ -18191,26 +18149,14 @@ function GenerateMapPreRender()
 			end
 			
 			if(lodname) then
-<<<<<<< HEAD
-				local lodmodel = GetFreeModelIds()
-				txd = engineLoadTXD("vc/"..Textures[lodname..".dff"]) 
-				engineImportTXD(txd, lodmodel)
-				dff = engineLoadDFF("vc/"..lodname..".dff")
-				engineReplaceModel(dff, lodmodel)
-=======
 				local lodmodel = GetFreeModelIds(lodname)
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 				
 				GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5], rx,ry,rz, true)
 				setElementDimension(GTAVC[ind][12], 1)
 				
 				setLowLODElement(GTAVC[ind][12], false)
 				setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
-<<<<<<< HEAD
-				engineSetModelLODDistance(lodmodel, v[10])
-=======
 				engineSetModelLODDistance(lodmodel, 300)
->>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 			else
 				setLowLODElement(GTAVC[ind][11], false)
 			end
