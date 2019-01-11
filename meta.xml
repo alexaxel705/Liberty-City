@@ -1,19 +1,9 @@
 <meta>
-	<info name="GTA III Liberty City" version="1.0.0" type="script" author="alexaxel705" description="GTA III Liberty City Map"/>
+	<info name="GTA III Liberty City" version="1.0.1" type="script" author="alexaxel705" description="GTA III Liberty City Map"/>
 	<script src="client.lua" type="client"/>
 	<script src="server.lua" type="server"/>
 	<download_priority_group>-1</download_priority_group>
 	
-	<file src="vc/04_strut1.col" type="client" download="false" />
-	<file src="vc/04_strut2.col" type="client" download="false" />
-	<file src="vc/04_wheel1.col" type="client" download="false" />
-	<file src="vc/04_wheel2.col" type="client" download="false" />
-	<file src="vc/1955clocktower.col" type="client" download="false" />
-	<file src="vc/1955clock_day.col" type="client" download="false" />
-	<file src="vc/1955clock_night.col" type="client" download="false" />
-	<file src="vc/1955downtown.col" type="client" download="false" />
-	<file src="vc/1955road.col" type="client" download="false" />
-	<file src="vc/1955theater1.col" type="client" download="false" />
 	<file src="vc/3D8Ball.col" type="client" download="false" />
 	<file src="vc/3D8Ball.dff" type="client" download="false" />
 	<file src="vc/3d8ball.txd" type="client" download="false" />

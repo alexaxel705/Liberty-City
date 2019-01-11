@@ -2319,7 +2319,7 @@
 
 
 -- worldmodel, worldmodelname, x,y,z, x,y,z,w, loddistance, object, lod
-local GTAVC = {
+local GTAVCSource = {
 [1] = {24330, "bistro_kitchen", 9187.133, 8566.589, 49.6788, 0, 0, 0, 1}, 
 [2] = {24331, "bistro_stairs", 9225.473, 8539.545, 48.803, 0, 0, 0, 1}, 
 [3] = {24332, "bistro_bar", 9187.133, 8566.589, 49.6788, 0, 0, 0, 1}, 
@@ -3169,7 +3169,7 @@ local GTAVC = {
 [847] = {24713, "com_2lane_tunnl", 8587.473, 9164.205, -3.74084, 0, 0, 0, 1, -1}, 
 [848] = {24714, "com_cust_roads14", 8699.603, 8891.478, 14.1371, 0, 0, 0, 1, -1}, 
 [849] = {24715, "com_cust_roads26", 8471.815, 8598.571, 19.0401, 0, 0, 0, 1, -1}, 
-[850] = {24716, "com_cust_roads31", 8429.27, 8943.585, 11.6331005, 0, 0, 0, 1, -1}, 
+--[850] = {24716, "com_cust_roads31", 8429.27, 8943.585, 11.6331005, 0, 0, 0, 1, -1}, 
 [851] = {24717, "com_cust_roads54", 8702.103, 8878.978, 14.124001, 0, 0, 0, 1, -1}, 
 [852] = {24718, "com_roadkb21", 8656.825, 8563.587, 10.3335, 0, 0, 0, 1, -1}, 
 [853] = {24719, "com_roadkb20", 8656.815, 8503.571, 11.686899, 0, 0, 0, 1, -1}, 
@@ -8652,23 +8652,23 @@ local GTAVC = {
 [6330] = {616, "veg_treea1", 7262.5, 8656.512, 17.2938, 0, 0, 0.300706, 0.953717, -1}, 
 [6331] = {24006, "lc_landswrd1", 7179.37, 8423.403, 7.6709995, 0, 0, 0, 1, 65}, 
 [6332] = {24007, "lc_landswrd2", 7175.42, 8671.091, 21.44, 0, 0, 0, 1, 66}, 
-[6333] = {24008, "lc_landswrd3", 7015.0, 8872.448, 32.671, 0, 0, 270, 1, 67}, 
+[6333] = {24008, "lc_landswrd3", 7015.0, 8872.448, 32.671, 0, 0, 0, 1, 67}, 
 [6334] = {24009, "lc_landswrd4", 6797.5, 8907.448, 45.321, 0, 0, 0, 1, 68}, 
-[6335] = {24010, "lc_landswrd5", 6810.0, 9097.449, 47.821, 0, 0, 270, 1, 69}, 
+[6335] = {24010, "lc_landswrd5", 6810.0, 9097.449, 47.821, 0, 0, 0, 1, 69}, 
 [6336] = {24011, "lc_landswrd6", 6870.0, 9187.448, 2.6709995, 0, 0, 0, 1, 70}, 
 [6337] = {24012, "lc_landnerd1", 7414.996, 8777.478, 2.6709995, 0, 0, 0, 1, 71}, 
 [6338] = {24013, "lc_landnerd2", 7230.0, 8977.448, 17.671, 0, 0, 0, 1, 72}, 
-[6339] = {24014, "lc_landnerd3", 7444.996, 9017.448, 2.6709995, 0, 0, 270, 1, 73}, 
+[6339] = {24014, "lc_landnerd3", 7444.996, 9017.448, 2.6709995, 0, 0, 0, 1, 73}, 
 [6340] = {24015, "lc_landnerd4", 7078.15, 9208.887, 20.374, 0, 0, 0, 1, 74}, 
-[6341] = {24016, "lc_landnerd5", 7265.0, 9192.449, 47.671, 0, 0, 270, 1, 75}, 
+[6341] = {24016, "lc_landnerd5", 7265.0, 9192.449, 47.671, 0, 0, 0, 1, 75}, 
 [6342] = {24017, "lc_landnerd6", 7025.0, 9407.448, 37.671, 0, 0, 0, 1, 76}, 
 [6343] = {24018, "lc_landnerd7", 7303.631, 9362.117, 72.623, 0, 0, 0, 1, 77}, 
 [6344] = {24019, "lc_landnerd8", 7610.563, 9317.449, 67.671, 0, 0, 0, 1, 78}, 
 [6345] = {24020, "lc_comnbtmrd1", 7906.8027, 8158.673, 25.016, 0, 0, 0, 1, 79}, 
 [6346] = {24021, "lc_comnbtmrd2", 8262.132, 8183.7734, 24.978, 0, 0, 0, 1, 80}, 
-[6347] = {24022, "lc_comnbtmrd3", 7906.8027, 8358.673, 25.016, 0, 0, 270, 1, 81}, 
+[6347] = {24022, "lc_comnbtmrd3", 7906.8027, 8358.673, 25.016, 0, 0, 0, 1, 81}, 
 [6348] = {24023, "lc_comnbtmrd4", 8236.814, 8303.571, 24.978, 0, 0, 0, 1, 82}, 
-[6349] = {24024, "lc_comnbtmrd5", 7909.309, 8526.122, 16.856, 0, 0, 270, 1, 83}, 
+[6349] = {24024, "lc_comnbtmrd5", 7909.309, 8526.122, 16.856, 0, 0, 0, 1, 83}, 
 [6350] = {24025, "lc_comnbtmrd6", 8321.814, 8513.571, 24.978, 0, 0, 0, 1, 84}, 
 [6351] = {24026, "lc_comntoprd1", 7916.81, 8713.57, 15.0532, 0.0, 0.0, 0.0, 1.0, 85}, 
 [6352] = {24027, "lc_comntoprd2", 8366.83, 8733.6, 20.2121, 0.0, 0.0, 0.0, 1.0, 86}, 
@@ -9187,6 +9187,9 @@ local GTAVC = {
 [6865] = {25392, "fishfctory", 9229.0, 7878.0, 7.1759005, 0, 0, 0, 1, -1}, 
 [6866] = {25391, "fshfctry_dstryd", 9229.0, 7878.0, 7.1759005, 0, 0, 0, 1, -1},
 }
+
+
+local GTAVC = {}
 
 
 local FreeIdsSource = {
@@ -17709,27 +17712,21 @@ local FreeIdsSource = {
 }
 
 
+local BannedFreeIdsSource = {
+	["destr"] = {625, 626, 627, 628, 629, 630, 631, 632, 633, 642, 643, 644, 646, 650, 716, 717, 737, 738, 792, 858, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 904, 905, 941, 955, 956, 959, 961, 990, 993, 996, 1209, 1211, 1213, 1219, 1220, 1221, 1223, 1224, 1225, 1226, 1227, 1228, 1229, 1230, 1231, 1232, 1235, 1238, 1244, 1251, 1255, 1257, 1262, 1264, 1265, 1270, 1280, 1281, 1282, 1283, 1284, 1285, 1286, 1287, 1288, 1289, 1290, 1291, 1293, 1294, 1297, 1300, 1302, 1315, 1328, 1329, 1330, 1338, 1350, 1351, 1352, 1370, 1373, 1374, 1375, 1407, 1408, 1409, 1410, 1411, 1412, 1413, 1414, 1415, 1417, 1418, 1419, 1420, 1421, 1422, 1423, 1424, 1425, 1426, 1428, 1429, 1431, 1432, 1433, 1436, 1437, 1438, 1440, 1441, 1443, 1444, 1445, 1446, 1447, 1448, 1449, 1450, 1451, 1452, 1456, 1457, 1458, 1459, 1460, 1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472, 1473, 1474, 1475, 1476, 1477, 1478, 1479, 1480, 1481, 1482, 1483, 1514, 1517, 1520, 1534, 1543, 1544, 1545, 1551, 1553, 1554, 1558, 1564, 1568, 1582, 1583, 1584, 1588, 1589, 1590, 1591, 1592, 1645, 1646, 1647, 1649, 1654, 1664, 1666, 1667, 1668, 1669, 1670, 1672, 1676, 1684, 1686, 1775, 1776, 1949, 1950, 1951, 1960, 1961, 1962, 1975, 1976, 1977, 2647, 2663, 2682, 2683, 2885, 2886, 2887, 2900, 2918, 2920, 2925, 2932, 2933, 2942, 2943, 2945, 2947, 2958, 2959, 2966, 2968, 2971, 2977, 2987, 2988, 2989, 2991, 2994, 3006, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3029, 3032, 3036, 3058, 3059, 3067, 3083, 3091, 3221, 3260, 3261, 3262, 3263, 3264, 3265, 3267, 3275, 3276, 3278, 3280, 3281, 3282, 3302, 3374, 3409, 3460, 3516, 3794, 3795, 3797, 3851, 3853, 3855, 3857, 3858, 3859, 3864, 3872, 3884, 11103, 12840, 16627, 16628, 16629, 16630, 16631, 16632, 16633, 16634, 16635, 16636, 16732, 17968}, 
+	["nighttime"] = {1657, 1658, 1659, 1661, 3872, 4212, 4213, 4214, 4215, 4216, 4217, 4218, 4219, 4220, 4221, 4222, 4715, 4716, 4717, 4723, 4725, 4739, 4740, 4741, 4742, 4743, 4744, 4745, 4746, 4747, 4748, 4749, 4750, 4751, 4752, 5057, 5058, 5059, 5465, 5661, 5662, 5665, 5776, 5786, 5791, 5872, 5876, 5990, 5991, 5992, 6192, 6193, 6194, 6195, 6196, 7071, 7072, 7097, 7206, 7207, 7208, 7220, 7221, 7222, 7226, 7230, 7263, 7264, 7265, 7266, 7268, 7280, 7289, 7290, 7314, 7331, 7332, 7333, 7892, 7942, 7943, 7944, 8370, 8371, 8372, 8395, 8621, 8874, 8876, 8878, 8880, 9088, 9089, 9094, 9095, 9100, 9101, 9104, 9121, 9122, 9123, 9124, 9125, 9126, 9127, 9128, 9129, 9175, 9885, 9886, 9932, 9933, 9934, 10057, 10058, 10146, 10147, 10976, 11394, 11410, 11411, 11412, 13461, 13484, 13485, 13493, 14496, 14541, 14615, 14631, 14634, 14763, 15044, 15045, 17579, 17954, 17955, 17956, 17957, 18076, 18087, 18093, 18096, 18097}, 
+	["anim"] = {2873, 2875, 2876, 2877, 2878, 2879, 3425, 3426, 3427, 6010, 6257, 7387, 7388, 7389, 7390, 7391, 7392, 7971, 7972, 7973, 9192, 9193, 9898, 9899, 10310, 10744, 11417, 11677, 13562, 14642, 16776, 16777, 16778, 16779, 16780, 16781, 16782, 18102}, 
+}
+local BannedFreeIds = {}
+
+
 local NativeModel = {}
 local MapOffset = {[1] = -8000, [2] = -8000, [3] = 0}
-
-for _,v in pairs(GTAVC) do
-	if(engineGetModelNameFromID(v[1])) then NativeModel[v[1]] = true end
-	v[3] = v[3] + MapOffset[1]
-	v[4] = v[4] + MapOffset[2]
-	v[5] = v[5] + MapOffset[3]
-end
-
 local FreeIds = {}
-for _i,v in pairs(FreeIdsSource) do
-	if(not NativeModel[v]) then 
-		FreeIds[#FreeIds+1] = v
-	end
-end
 
 
 
 local Zones = {
-
 	--["WHOLEVC"] = {
 	--	{"WHOLEVC", 5977.83, -10413.5, 10069.9, -6351.89}, 
 	--	{"WHOLELC", 6109.65, 6902.24, 10069.9, 10206.4}
@@ -17959,12 +17956,39 @@ end
 
 
 
-local x,y,_ = getElementPosition(localPlayer)
 
-function GetFreeModelIds()
-	local out = FreeIds[#FreeIds]
-	table.remove(FreeIds, #FreeIds)
-	return out
+local x,y,_ = getElementPosition(localPlayer)
+local ReplaceModel = {}
+local LoadedTxd = {}
+
+function GetFreeModelIds(forid)
+	if(not ReplaceModel[forid]) then
+		local out = FreeIds[#FreeIds]
+		ReplaceModel[forid] = out
+		table.remove(FreeIds, #FreeIds)
+		
+		
+		if(fileExists("vc/"..forid..".col")) then
+			col_floors = engineLoadCOL("vc/"..forid..".col")
+			engineReplaceCOL(col_floors, ReplaceModel[forid])
+		end
+		
+		
+		local texture = Textures[forid..".dff"]
+		if(texture) then 
+			if(not LoadedTxd[texture]) then
+				LoadedTxd[texture] = engineLoadTXD("vc/"..texture)
+				engineImportTXD(LoadedTxd[texture], ReplaceModel[forid])
+			else
+				engineImportTXD(LoadedTxd[texture], ReplaceModel[forid])
+			end
+		end
+		
+		
+		dff = engineLoadDFF("vc/"..forid..".dff")
+		engineReplaceModel(dff, ReplaceModel[forid])
+	end
+	return ReplaceModel[forid]
 end
 
 
@@ -18010,6 +18034,34 @@ addEventHandler("CheckFiles", localPlayer, CheckFiles)
 
 
 function AllDownloadCompleted()
+	for i, v in pairs(GTAVCSource) do
+		v[3] = v[3] + MapOffset[1]
+		v[4] = v[4] + MapOffset[2]
+		v[5] = v[5] + MapOffset[3]
+		if(engineGetModelNameFromID(v[1])) then 
+			NativeModel[v[1]] = true 
+			local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
+			GTAVCSource[i][11] = createObject(v[1],v[3],v[4],v[5], rx,ry,rz)
+			setElementDimension(GTAVCSource[i][11], 1)
+		else
+			table.insert(GTAVC, v)
+		end
+	end
+
+	
+	for _, dat in pairs(BannedFreeIdsSource) do
+		for _, v in ipairs(dat) do
+			BannedFreeIds[v] = true
+		end
+	end 
+	
+	for _, v in pairs(FreeIdsSource) do
+		if(not NativeModel[v] and not BannedFreeIds[v]) then 
+			table.insert(FreeIds, 1, v)
+		end
+	end
+
+
 	for i = 550, 20000 do
 		removeWorldModel(i,10000,0,0,0)
 	end
@@ -18046,6 +18098,19 @@ addEventHandler("onClientFileDownloadComplete", root, onDownloadFinish)
 
 
 
+<<<<<<< HEAD
+=======
+
+function getMaxIndex(arr)
+	local ii = 0
+	for i,_ in pairs(arr) do 
+		if(i > ii) then
+			ii=i
+		end
+	end
+	return ii
+end
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 
 function getMaxIndex(arr)
 	local ii = 0
@@ -18057,6 +18122,10 @@ function getMaxIndex(arr)
 	return ii
 end
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 local TotalObjects = getMaxIndex(GTAVC)
 local ind = 1
 local Loading2 = 0
@@ -18066,6 +18135,7 @@ function GenerateMapPreRender()
 		local lodname = false
 		local model = v[1]
 		if(not NativeModel[v[1]]) then	
+<<<<<<< HEAD
 			model = GetFreeModelIds()			
 			col_floors = engineLoadCOL("vc/"..v[2]..".col")
 			engineReplaceCOL(col_floors, model)
@@ -18073,8 +18143,27 @@ function GenerateMapPreRender()
 			if(Textures[v[2]..".dff"]) then 
 				txd = engineLoadTXD("vc/"..Textures[v[2]..".dff"])
 				engineImportTXD(txd, model)
-			end
+=======
+			model = GetFreeModelIds(v[2])
 			
+			lodname = 'lod'..string.sub(v[2], 4)
+			if(not Textures[lodname..".dff"]) then lodname = false end
+		end
+		
+		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
+		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
+		if(isElement(GTAVC[ind][11])) then
+			if(not v[10]) then v[10] = 300 end
+			if(v[10] == -1) then 
+				v[10] = 300 
+			elseif(v[10] <= 150) then 
+				v[10] = 150 
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
+			end
+			engineSetModelLODDistance(model, v[10])
+			setElementDimension(GTAVC[ind][11], 1)
+			
+<<<<<<< HEAD
 			dff = engineLoadDFF("vc/"..v[2]..".dff")
 			engineReplaceModel(dff, model)
 			
@@ -18089,6 +18178,9 @@ function GenerateMapPreRender()
 			setElementDimension(GTAVC[ind][11], 1)
 			
 			if((ind/800) == math.floor(ind/800) or ind == 5) then -- Менять кадр каждые 800 объектов
+=======
+			if((ind/1000) == math.floor(ind/1000) or ind == 1) then -- Менять кадр каждые 1000 объектов
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 				setCameraMatrix(v[3]+150,v[4]+150,v[5]+150, v[3],v[4],v[5]+50)
 				setWeather(1)
 				setFogDistance(1000)
@@ -18099,18 +18191,26 @@ function GenerateMapPreRender()
 			end
 			
 			if(lodname) then
+<<<<<<< HEAD
 				local lodmodel = GetFreeModelIds()
 				txd = engineLoadTXD("vc/"..Textures[lodname..".dff"]) 
 				engineImportTXD(txd, lodmodel)
 				dff = engineLoadDFF("vc/"..lodname..".dff")
 				engineReplaceModel(dff, lodmodel)
+=======
+				local lodmodel = GetFreeModelIds(lodname)
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 				
 				GTAVC[ind][12] = createObject(lodmodel,v[3],v[4],v[5], rx,ry,rz, true)
 				setElementDimension(GTAVC[ind][12], 1)
 				
 				setLowLODElement(GTAVC[ind][12], false)
 				setLowLODElement(GTAVC[ind][11], GTAVC[ind][12])
+<<<<<<< HEAD
 				engineSetModelLODDistance(lodmodel, v[10])
+=======
+				engineSetModelLODDistance(lodmodel, 300)
+>>>>>>> f75968fdb7a5545a3684c2a233c182824e382ce9
 			else
 				setLowLODElement(GTAVC[ind][11], false)
 			end
