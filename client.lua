@@ -18025,32 +18025,6 @@ function CheckFiles(arr)
 		FullLoading = #DownloadList
 		addEventHandler("onClientRender", root, DrawOnClientRender)
 	else
-		for i, v in pairs(GTAVCSource) do
-			v[3] = v[3] + MapOffset[1]
-			v[4] = v[4] + MapOffset[2]
-			v[5] = v[5] + MapOffset[3]
-			if(engineGetModelNameFromID(v[1])) then 
-				NativeModel[v[1]] = true 
-				local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
-				GTAVCSource[i][11] = createObject(v[1],v[3],v[4],v[5], rx,ry,rz)
-				setElementDimension(GTAVCSource[i][11], 1)
-			else
-				table.insert(GTAVC, v)
-			end
-		end
-
-		
-		for _, dat in pairs(BannedFreeIdsSource) do
-			for _, v in ipairs(dat) do
-				BannedFreeIds[v] = true
-			end
-		end 
-		
-		for _, v in pairs(FreeIdsSource) do
-			if(not NativeModel[v] and not BannedFreeIds[v]) then 
-				table.insert(FreeIds, 1, v)
-			end
-		end
 		AllDownloadCompleted()
 	end
 end
@@ -18060,6 +18034,34 @@ addEventHandler("CheckFiles", localPlayer, CheckFiles)
 
 
 function AllDownloadCompleted()
+	for i, v in pairs(GTAVCSource) do
+		v[3] = v[3] + MapOffset[1]
+		v[4] = v[4] + MapOffset[2]
+		v[5] = v[5] + MapOffset[3]
+		if(engineGetModelNameFromID(v[1])) then 
+			NativeModel[v[1]] = true 
+			local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
+			GTAVCSource[i][11] = createObject(v[1],v[3],v[4],v[5], rx,ry,rz)
+			setElementDimension(GTAVCSource[i][11], 1)
+		else
+			table.insert(GTAVC, v)
+		end
+	end
+
+	
+	for _, dat in pairs(BannedFreeIdsSource) do
+		for _, v in ipairs(dat) do
+			BannedFreeIds[v] = true
+		end
+	end 
+	
+	for _, v in pairs(FreeIdsSource) do
+		if(not NativeModel[v] and not BannedFreeIds[v]) then 
+			table.insert(FreeIds, 1, v)
+		end
+	end
+
+
 	for i = 550, 20000 do
 		removeWorldModel(i,10000,0,0,0)
 	end
