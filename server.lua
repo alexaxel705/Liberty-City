@@ -19,14 +19,6 @@ until Completed;
 
 
 
-function CreateVehicle(model, x, y, z, rx, ry, rz, numberplate, bDirection, variant1, variant2)
-	local theVehicle = createVehicle(model, x, y, z, rx, ry, rz, numberplate, bDirection, variant1, variant2)
-	setElementDimension(theVehicle, 1)
-	return theVehicle
-end
-
-
-
 
 
 function Go_LC(thePlayer)
