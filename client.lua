@@ -9185,7 +9185,7 @@ local GTAVCSource = {
 [6863] = {25396, "railtrax_strtshort", 9215.135, 7841.7, -0.97483015, 0, 0, 0, 1, -1}, 
 [6864] = {25398, "railtrax_straightss", 9232.473, 7843.95, -0.65765, 8.55574e-008, 4.50711e-016, -5.56363e-008, 1, -1}, 
 [6865] = {25392, "fishfctory", 9229.0, 7878.0, 7.1759005, 0, 0, 0, 1, -1}, 
-[6866] = {25391, "fshfctry_dstryd", 9229.0, 7878.0, 7.1759005, 0, 0, 0, 1, -1},
+[6866] = {25391, "fshfctry_dstryd", 9229.0, 7878.0, 7.1759005, 0, 0, 0, 1, -1}, 
 }
 
 
@@ -17714,6 +17714,7 @@ local BannedFreeIdsSource = {
 	["destr"] = {625, 626, 627, 628, 629, 630, 631, 632, 633, 642, 643, 644, 646, 650, 716, 717, 737, 738, 792, 858, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 904, 905, 941, 955, 956, 959, 961, 990, 993, 996, 1209, 1211, 1213, 1219, 1220, 1221, 1223, 1224, 1225, 1226, 1227, 1228, 1229, 1230, 1231, 1232, 1235, 1238, 1244, 1251, 1255, 1257, 1262, 1264, 1265, 1270, 1280, 1281, 1282, 1283, 1284, 1285, 1286, 1287, 1288, 1289, 1290, 1291, 1293, 1294, 1297, 1300, 1302, 1315, 1328, 1329, 1330, 1338, 1350, 1351, 1352, 1370, 1373, 1374, 1375, 1407, 1408, 1409, 1410, 1411, 1412, 1413, 1414, 1415, 1417, 1418, 1419, 1420, 1421, 1422, 1423, 1424, 1425, 1426, 1428, 1429, 1431, 1432, 1433, 1436, 1437, 1438, 1440, 1441, 1443, 1444, 1445, 1446, 1447, 1448, 1449, 1450, 1451, 1452, 1456, 1457, 1458, 1459, 1460, 1461, 1462, 1463, 1464, 1465, 1466, 1467, 1468, 1469, 1470, 1471, 1472, 1473, 1474, 1475, 1476, 1477, 1478, 1479, 1480, 1481, 1482, 1483, 1514, 1517, 1520, 1534, 1543, 1544, 1545, 1551, 1553, 1554, 1558, 1564, 1568, 1582, 1583, 1584, 1588, 1589, 1590, 1591, 1592, 1645, 1646, 1647, 1649, 1654, 1664, 1666, 1667, 1668, 1669, 1670, 1672, 1676, 1684, 1686, 1775, 1776, 1949, 1950, 1951, 1960, 1961, 1962, 1975, 1976, 1977, 2647, 2663, 2682, 2683, 2885, 2886, 2887, 2900, 2918, 2920, 2925, 2932, 2933, 2942, 2943, 2945, 2947, 2958, 2959, 2966, 2968, 2971, 2977, 2987, 2988, 2989, 2991, 2994, 3006, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3029, 3032, 3036, 3058, 3059, 3067, 3083, 3091, 3221, 3260, 3261, 3262, 3263, 3264, 3265, 3267, 3275, 3276, 3278, 3280, 3281, 3282, 3302, 3374, 3409, 3460, 3516, 3794, 3795, 3797, 3851, 3853, 3855, 3857, 3858, 3859, 3864, 3872, 3884, 11103, 12840, 16627, 16628, 16629, 16630, 16631, 16632, 16633, 16634, 16635, 16636, 16732, 17968}, 
 	["nighttime"] = {1657, 1658, 1659, 1661, 3872, 4212, 4213, 4214, 4215, 4216, 4217, 4218, 4219, 4220, 4221, 4222, 4715, 4716, 4717, 4723, 4725, 4739, 4740, 4741, 4742, 4743, 4744, 4745, 4746, 4747, 4748, 4749, 4750, 4751, 4752, 5057, 5058, 5059, 5465, 5661, 5662, 5665, 5776, 5786, 5791, 5872, 5876, 5990, 5991, 5992, 6192, 6193, 6194, 6195, 6196, 7071, 7072, 7097, 7206, 7207, 7208, 7220, 7221, 7222, 7226, 7230, 7263, 7264, 7265, 7266, 7268, 7280, 7289, 7290, 7314, 7331, 7332, 7333, 7892, 7942, 7943, 7944, 8370, 8371, 8372, 8395, 8621, 8874, 8876, 8878, 8880, 9088, 9089, 9094, 9095, 9100, 9101, 9104, 9121, 9122, 9123, 9124, 9125, 9126, 9127, 9128, 9129, 9175, 9885, 9886, 9932, 9933, 9934, 10057, 10058, 10146, 10147, 10976, 11394, 11410, 11411, 11412, 13461, 13484, 13485, 13493, 14496, 14541, 14615, 14631, 14634, 14763, 15044, 15045, 17579, 17954, 17955, 17956, 17957, 18076, 18087, 18093, 18096, 18097}, 
 	["anim"] = {2873, 2875, 2876, 2877, 2878, 2879, 3425, 3426, 3427, 6010, 6257, 7387, 7388, 7389, 7390, 7391, 7392, 7971, 7972, 7973, 9192, 9193, 9898, 9899, 10310, 10744, 11417, 11677, 13562, 14642, 16776, 16777, 16778, 16779, 16780, 16781, 16782, 18102}, 
+	["physics"] = {1502}, 
 }
 local BannedFreeIds = {}
 
@@ -17798,7 +17799,6 @@ function GetFreeModelIds(forid)
 		ReplaceModel[forid] = out
 		table.remove(FreeIds, #FreeIds)
 		
-		
 		if(fileExists("vc/"..forid..".col")) then
 			col_floors = engineLoadCOL("vc/"..forid..".col")
 			engineReplaceCOL(col_floors, ReplaceModel[forid])
@@ -17831,6 +17831,7 @@ local Loading = 0
 local FullLoading = false
 local DownloadNext = true
 local DownloadList = {}
+local DownloadListSource = {}
 function DrawOnClientRender()
 	if(Loading) then
 		if(DownloadNext) then
@@ -17852,6 +17853,7 @@ function CheckFiles(arr)
 		end
 	end
 	if(#newarr > 0) then
+		DownloadListSource = newarr
 		DownloadList = newarr
 		FullLoading = #DownloadList
 		addEventHandler("onClientRender", root, DrawOnClientRender)
@@ -17984,7 +17986,8 @@ function GenerateMapPreRender()
 		
 		local rx,ry,rz = fromQuaternion(v[6],v[7],v[8],v[9])
 		GTAVC[ind][11] = createObject(model,v[3],v[4],v[5], rx,ry,rz)
-		setElementData(GTAVC[ind][11], "dat", v[2])
+		GTAVC[ind][1] = model
+		
 		if(isElement(GTAVC[ind][11])) then
 			if(not v[10]) then v[10] = 300 end
 			if(v[10] == -1) then 
@@ -18033,6 +18036,53 @@ function GenerateMapPreRender()
 	dxDrawRectangle(100*scale, screenHeight-(100*scale),screenWidth-(200*scale), 15*scale, tocolor(45,70,50,255))
 	dxDrawRectangle(100*scale, screenHeight-(100*scale),(screenWidth-(200*scale))*(Loading2/100), 15*scale, tocolor(83,147,104,255))
 end
+
+
+
+
+local resind = 1
+function RestoreElements()
+	if(GTAVC[resind]) then
+		engineRestoreModel(GTAVC[resind][1])
+		engineRestoreCOL(GTAVC[resind][1])
+		destroyElement(GTAVC[resind][11])
+		
+		if(GTAVC[resind][12]) then
+			local model = getElementModel(GTAVC[resind][12])
+			engineRestoreModel(model)
+			engineRestoreCOL(model)
+			destroyElement(GTAVC[resind][12])
+		end
+	
+		Loading = (#GTAVC-resind)/#GTAVC*100
+		dxDrawRectangle(100*scale, screenHeight-(100*scale),screenWidth-(200*scale), 15*scale, tocolor(45,50,70,255))
+		dxDrawRectangle(100*scale, screenHeight-(100*scale),(screenWidth-(200*scale))*(Loading/100), 15*scale, tocolor(83,104,147,255))
+		
+		resind = resind+1
+	else
+		GTAVC = {}
+		setWaterLevel(0)
+		restoreAllWorldModels()
+		setOcclusionsEnabled(true)
+		triggerServerEvent("LeaveLC", localPlayer, localPlayer)
+		removeEventHandler("onClientRender", root, RestoreElements)
+	end
+end
+
+
+function restoreWorld()
+	for i, dat in pairs(GTAVCSource) do
+		if(dat[11]) then
+			destroyElement(dat[11])
+			dat[11] = false
+		end
+	end
+	
+	triggerEvent("LibertyRadar", localPlayer, localPlayer)
+	addEventHandler("onClientRender", root, RestoreElements)
+end
+addEvent("restoreWorld", true)
+addEventHandler("restoreWorld", localPlayer, restoreWorld)
 
 
 
