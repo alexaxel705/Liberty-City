@@ -23,15 +23,15 @@ until Completed;
 
 function Go_LC(thePlayer)
 	setCameraTarget(thePlayer, thePlayer)
-	setElementPosition(thePlayer, 787.5, 691.2, 18.5)
-	setElementRotation(thePlayer, 0,0,180)
+	setElementPosition(thePlayer, -845.3, 394.6, 11.3)
+	setElementRotation(thePlayer, 0,0,270)
 	setElementDimension(thePlayer, 1)
 	setElementInterior(thePlayer, 0)
 	setElementFrozen(thePlayer, false)
 	local theVehicle = getPedOccupiedVehicle(thePlayer)
 	if(theVehicle) then
-		setElementPosition(theVehicle, 787.5, 691.2, 20.5)
-		setElementRotation(theVehicle, 0,0,180)
+		setElementPosition(theVehicle, -845.3, 394.6, 12.3)
+		setElementRotation(theVehicle, 0,0,270)
 		setElementDimension(theVehicle, 1)
 		setElementInterior(theVehicle, 0)
 	end
@@ -40,6 +40,15 @@ function Go_LC(thePlayer)
 end
 addEvent("Go_LC", true)
 addEventHandler("Go_LC", root, Go_LC)
+
+
+
+function LeaveLC(thePlayer, thePed, City)
+	checkVC[thePlayer] = nil
+end
+addEvent("LeaveLC", true)
+addEventHandler("LeaveLC", root, LeaveLC)
+
 
 
 function CheckEnd(thePlayer)
@@ -70,4 +79,12 @@ function lc(thePlayer, command, h)
 		end
 	end
 end
+addEvent("lc", true)
+addEventHandler("lc", root, lc)
 addCommandHandler("lc", lc)
+
+
+
+
+
+
