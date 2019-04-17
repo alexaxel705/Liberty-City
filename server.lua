@@ -51,7 +51,7 @@ addEventHandler("LeaveLC", root, LeaveLC)
 
 
 
-function CheckEnd(thePlayer)
+function CheckEndLC(thePlayer)
 	triggerClientEvent(thePlayer, "LibertyRadar", thePlayer)
 	setElementData(thePlayer, "City", "Liberty City")
 	checkVC[thePlayer] = "lc"
@@ -64,14 +64,14 @@ function CheckEnd(thePlayer)
 		setElementInterior(theVehicle, 0)
 	end
 end
-addEvent("CheckEnd", true)
-addEventHandler("CheckEnd", root, CheckEnd)
+addEvent("CheckEndLC", true)
+addEventHandler("CheckEndLC", root, CheckEndLC)
 
 
 
 function lc(thePlayer, command, h)
 	if(not checkVC[thePlayer]) then
-		triggerClientEvent(thePlayer, "CheckFiles", thePlayer, DownloadList)
+		triggerClientEvent(thePlayer, "CheckFilesLC", thePlayer, DownloadList)
 		checkVC[thePlayer] = "check"
 	else
 		if(checkVC[thePlayer] == "lc") then

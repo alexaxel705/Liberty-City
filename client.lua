@@ -17857,7 +17857,7 @@ local FullLoading = false
 local DownloadNext = true
 local DownloadList = {}
 local DownloadListSource = {}
-function DrawOnClientRender()
+function DrawOnClientRenderLC()
 	if(Loading) then
 		if(DownloadNext) then
 			DownloadNext = false
@@ -17870,7 +17870,7 @@ end
 
 
 
-function CheckFiles(arr)	
+function CheckFilesLC(arr)	
 	local newarr = {}
 	for _, i in ipairs(arr) do
 		if(not fileExists(i)) then
@@ -17881,13 +17881,13 @@ function CheckFiles(arr)
 		DownloadListSource = newarr
 		DownloadList = newarr
 		FullLoading = #DownloadList
-		addEventHandler("onClientRender", root, DrawOnClientRender)
+		addEventHandler("onClientRender", root, DrawOnClientRenderLC)
 	else
 		AllDownloadCompleted()
 	end
 end
-addEvent("CheckFiles", true)
-addEventHandler("CheckFiles", localPlayer, CheckFiles)
+addEvent("CheckFilesLC", true)
+addEventHandler("CheckFilesLC", localPlayer, CheckFilesLC)
 
 
 
@@ -17952,9 +17952,9 @@ function AllDownloadCompleted()
 	end
 	setWaterLevel(-5000)
 	setOcclusionsEnabled(false)
-	triggerServerEvent("CheckEnd", localPlayer, localPlayer)
+	triggerServerEvent("CheckEndLC", localPlayer, localPlayer)
 	
-	addEventHandler("onClientRender", root, GenerateMapPreRender)	
+	addEventHandler("onClientRender", root, GenerateMapPreRenderLC)	
 
 	setWeather(1)
 	setFogDistance(1000)
@@ -17971,7 +17971,7 @@ function onDownloadFinish(file, success)
 			table.remove(DownloadList, 1)
 			Loading = (FullLoading-#DownloadList)/FullLoading*100
 			if(#DownloadList == 0) then
-				removeEventHandler("onClientRender", root, DrawOnClientRender)	
+				removeEventHandler("onClientRender", root, DrawOnClientRenderLC)	
 				AllDownloadCompleted()
 			else
 				DownloadNext = true
@@ -18000,7 +18000,7 @@ end
 local TotalObjects = getMaxIndex(GTAVC)
 local ind = 1
 local Loading2 = 0
-function GenerateMapPreRender()
+function GenerateMapPreRenderLC()
 	if(GTAVC[ind]) then 
 		local v = GTAVC[ind]
 		local lodname = false
@@ -18060,7 +18060,7 @@ function GenerateMapPreRender()
 		else
 			setGameSpeed(1.2)
 			triggerServerEvent("Go_LC", localPlayer, localPlayer)
-			removeEventHandler("onClientRender", root, GenerateMapPreRender)
+			removeEventHandler("onClientRender", root, GenerateMapPreRenderLC)
 		end
 	end
 	Loading2 = (#GTAVC-(#GTAVC-ind))/#GTAVC*100
